@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
 
     def mysetWindowstitle(self):
         print("设置窗口标题")
-        newwindow = choice(windows_title)
+        newwindow = choice(windows_title) # choice() 方法从序列中随机返回一个元素
         print(f"新的标题是{newwindow}")
         self.setWindowTitle(newwindow) # 设置窗口标题
 
@@ -45,7 +45,6 @@ class MainWindow(QMainWindow):
             self.button.setDisabled(True)
             #self.button.setEnabled(False)
 
-
     # 与构造函数同级
     def the_clicked(self, checked): # checked 内部变量，默认是False
         self.is_clicked = checked
@@ -55,7 +54,6 @@ class MainWindow(QMainWindow):
         self.button.setText("push me")
         self.button.setEnabled(False) # 设置按钮不可点击
         self.setWindowTitle("按钮已不可点击")
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
