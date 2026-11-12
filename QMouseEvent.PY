@@ -1,6 +1,7 @@
 # QMouseEvent   鼠标事件
 
 import sys
+
 from PySide6.QtWidgets import QApplication, QLabel, QMainWindow
 from PySide6.QtCore import  QSize
 
@@ -26,11 +27,14 @@ class MainWindow(QMainWindow):
         参数:
             event: QMouseEvent对象，包含鼠标事件的相关信息
         """
-        self.label.setText(f'鼠标移动: {event.pos().x()}, {event.pos().y()}')  # 设置标签文本，显示鼠标的x和y坐标
-        def mousePressEvent(self, event):  # 定义鼠标按下事件处理函数
-            self.label.setText(f'鼠标按下: {event.pos().x()}, {event.pos().y()}')
+        pos = event.position()
+        self.label.setText(f'鼠标移动: {pos.x()}, {pos.y()}')  # 设置标签文本，显示鼠标的x和y坐标
+    def mousePressEvent(self, event):  # 定义鼠标按下事件处理函数
+        pos = event.position()
+        self.label.setText(f'鼠标按下: {pos.x()}, {pos.y()}')
     def mouseReleaseEvent(self, event):  # 定义鼠标释放事件处理函数
-        self.label.setText(f'鼠标释放: {event.pos().x()}, {event.pos().y()}')  # 设置标签文本，显示鼠标释放时的坐标位置
+        pos = event.position()
+        self.label.setText(f'鼠标释放: {pos.x()}, {pos.y()}')  # 设置标签文本，显示鼠标释放时的坐标位置
     def mouseDoubleClickEvent(self, event):  # 定义一个处理鼠标双击事件的方法
 
         """
@@ -39,7 +43,8 @@ class MainWindow(QMainWindow):
         参数:
             event: 鼠标事件对象，包含鼠标点击的位置等信息
         """
-        self.label.setText(f'鼠标双击: {event.pos().x()}, {event.pos().y()}')  # 设置标签文本，显示鼠标双击的坐标位置
+        pos = event.position()
+        self.label.setText(f'鼠标双击: {pos.x()}, {pos.y()}')  # 设置标签文本，显示鼠标双击的坐标位置
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
